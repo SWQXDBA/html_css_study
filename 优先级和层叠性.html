@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    /*相同的选择器属性，距离元素更近的生效 不同的选择器根据优先级规则 important的有最高优先级（并且不执行层叠性而是优先展示）*/
+    div{
+      color: chocolate !important;
+      font-size: 200px;
+    }
+    div{
+      color:red ;
+    }
+    .cl{
+      /*此时类选择器和元素选择器都是important 但是类选择器的优先级更高*/
+      color: blue !important;
+    }
+  </style>
+</head>
+<body>
+<div class="cl">div</div>
+</body>
+</html>

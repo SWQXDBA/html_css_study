@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .a {
+            color: aqua;
+        }
+
+        .red {
+            color: red;
+
+        }
+
+        #i {
+            background: aqua;
+        }
+
+        .fonts {
+            /*斜体*/
+            font-style: italic;
+            /*下划线*/
+            text-decoration: red underline;
+            /*缩进 1em为一个当前元素的大小*/
+            text-indent: 5em;
+
+        }
+
+        .行间距 {
+            /*包括上间距+下间距+文本高度 其中文本默认为16px 因此小于16的时候文本会被覆盖
+            设置为20px时 上间距和下间距各占2px*/
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="a red"><a href="#i">定位</a>aqaa</div>
+<div id="i">22</div>
+<p class="行间距">
+    aaaaaa <br>
+    aaaaaaaa
+</p>
+<h1 class="fonts">22啊啊啊啊啊啊啊3</h1>
+</body>
+</html>

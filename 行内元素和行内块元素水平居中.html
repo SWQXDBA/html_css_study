@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    div{
+      /*此时里面的行内元素被视为text一样居中摆放*/
+      text-align: center;
+      background-color: red;
+      /*让块级盒子水平居中 需要两个条件
+      1:设置了宽度width
+      2：盒子的左右外边距都设置为auto*/
+      width: 200px;
+
+      margin:  auto;
+
+    }
+  </style>
+</head>
+<body>
+<div>
+  <span>aaa</span> <span>aaa</span>
+</div>
+</body>
+</html>

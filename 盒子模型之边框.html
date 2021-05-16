@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    div{
+      background-color: chocolate;
+      border-color: aqua;
+    }
+    .c1{
+      width: 300px;
+      height: 150px;
+      border-width: 5px;
+      /*边框的样式 solid:实线边框 默认黑色*/
+      border-style: solid;
+        /*  表示相邻的单元格合并*/
+        border-collapse: collapse;
+
+    }
+    .c2{
+      width: 300px;
+      height: 150px;
+      border-width: 5px;
+      /*虚线*/
+      border-style: dashed;
+    }
+    .c3{
+      width: 300px;
+      height: 150px;
+      border-width: 5px;
+      /*点线*/
+      border-style: dotted;
+    }
+    .c4{
+      width: 300px;
+      height: 150px;
+      border-width: 5px;
+      /*双行*/
+      border-style: double;
+    }
+
+    .c5{
+      /*边框的简写*/
+      width: 300px;
+      height: 150px;
+      /*没有规定顺序*/
+      border: 15px solid red;
+    }
+    .c6{
+      /*边框四个边分开来设置*/
+      width: 300px;
+      height: 150px;
+      /*没有规定顺序*/
+      /*注意这里是写的边框的宽度 长度都是盒子的边长 所以宽度可以不一样 一般以px为单位*/
+
+      border-top: 15px solid red;
+      border-bottom: 20px dashed blue;
+      border-left: 8px dashed yellow;
+      border-right: 33px double green;
+    }
+  </style>
+</head>
+<body>
+<div class="c1"></div>
+<div class="c1"></div>
+<div class="c2"></div>
+<div class="c3"></div>
+<div class="c4"></div>
+<div class="c5"></div>
+<br>
+<div class="c6"></div>
+<div class="c6"></div>
+</body>
+</html>
