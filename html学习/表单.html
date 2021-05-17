@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="http://localhost:8080/index" method="get" >
+  <label>
+    <input type="text" placeholder="输入用户名" name="username" value="默认值">
+  </label>
+  <br>
+  <input type="password" placeholder="请输入密码 最多maxlength个" name="password" maxlength="6">
+
+
+  <br>
+  checked表示默认选中
+  <input type="radio" checked/>
+  <br>
+  <!--  单选框 name相同时才可实现单选效果 也可以实现多选效果-->
+ 男 <input type="radio" name="SEX" value="1" > 女 <input type="radio" name="SEX" value="0">
+  <br>
+  <!--  复选（多选）框-->
+
+    label自己查一下 就是点击左边那个字也可以选中，不一定要直接点到圆圈
+    <br>
+    <label for="1">男</label>
+  <input type="checkbox" name="复选项" id="1" value="复选项1" >
+    <br>
+    <label for="2">女</label>
+    <input type="checkbox" name="复选项" id="2" value="复选项2" >
+  <input type="submit" placeholder="提交">
+
+
+
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>登陆</title>
+</head>
+<body style="text-align: center">
+<div>
+    <h1>此页面仅供学习交流使用，请勿输入常用的账户密码！</h1>
+</div>
+<h1>教材管理系统</h1>
+<div>
+    <h1>普通用户登录</h1>
+</div>
+
+<form action="api/login/userLogin" method="get">
+    <input name="name" placeholder="请输入用户名" type="text">
+    <br>
+    <input name="password" placeholder="请输入密码" type="password">
+    <br>
+    <input type="submit" value="登陆">
+    <br>
+
+    <span>
+        <label for="0">学生</label>
+    <input checked id="0" name="isAdmin" type="radio" value="0">
+    </span>
+    <span>
+            <label for="1">老师</label>
+    <input id="1" name="isAdmin" type="radio" value="1">
+    </span>
+
+</form>
+
+<br>
+<a href="register.html">还没有账号？点击前往注册</a>
+</body>
+</html>
