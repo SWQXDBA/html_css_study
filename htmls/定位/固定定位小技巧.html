@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div{
+      height: 2000px;
+      background-color: red;
+      width: 600px;
+      margin: 0 auto;
+    }
+    .top{
+      height: 0;
+      width: 0;
+    }
+    .fixbox{
+      height: 100px;
+      background-color: blue;
+      width: 20px;
+      /*先移动到浏览器窗口中间的位置*/
+      position: fixed;
+      /*再设置外边距为版心盒子宽度的一半*/
+      margin-left: 300px;
+      left: 50%;
+      top: 200px;
+    }
+    .fixbox a{
+      font-size: 20px;
+      color: #cccccc;
+
+    }
+  </style>
+</head>
+<body>
+<div class="top" id="top"></div>
+<div>
+
+</div>
+<div class="fixbox">
+  <a href="#top">返回顶部</a>
+  <a href="#top"><img src="../../images/sucai.png" height="80" width="286"/></a>
+</div>
+</body>
+</html>

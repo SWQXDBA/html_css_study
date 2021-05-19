@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .bigger{
+      width: 800px;
+
+    }
+    .box{
+      float: left;
+      /*子绝对 父相对定位*/
+      /*相对定位*/
+      width: 200px;
+      height: 300px;
+      position: relative;
+      background-color: blue;
+    }
+    .son{
+      /*绝对定位*/
+      top: 20px;
+      left: 10px;
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      position: absolute;
+      font-size: 15px;
+      line-height: 30px;
+    }
+    .son2{
+      /*绝对定位*/
+      bottom: 20px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      position: absolute;
+      font-size: 15px;
+      line-height: 30px;
+
+    }
+    .clearfix:after,.clearfix:before{
+      content:"";
+      display: table;
+    }
+    .clearfix:after{
+      clear: both;
+    }
+    .clearfix{
+      *zoom:1;
+    }
+
+  </style>
+</head>
+<body>
+<div class="clearfix bigger">
+  <div class="box">
+    <div class="son">1</div>
+    <div class="son2">2</div>
+  </div>
+  <div class="box">
+    <div class="son">1</div>
+    <div class="son2">2</div>
+  </div>  <div class="box">
+  <div class="son">1</div>
+  <div class="son2">2</div>
+</div>  <div class="box">
+  <div class="son">1</div>
+  <div class="son2">2</div>
+</div>  <div class="box">
+  <div class="son">1</div>
+  <div class="son2">2</div>
+</div>  <div class="box">
+  <div class="son">1</div>
+  <div class="son2">2</div>
+</div>
+
+
+</div>
+</body>
+</html>
