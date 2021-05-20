@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .c1{
+      position: relative;
+      display: block;
+      background-color: aqua;
+      width: 200px;
+      height: 200px;
+      margin: 200px auto;
+    }
+    .c2{
+      position: absolute;
+      left: 0;
+      z-index: 1;
+      display: block;
+      background-color:transparent;
+      width: 200px;
+      height: 200px;
+    }
+    .c2:hover{
+      background-color:rgba(0,0,0,.3);
+    }
+
+
+    .c4{
+      /*此时c4隐藏起来了并且不占位置 所以鼠标选不到这个盒子 要用父级盒子hover.子盒子的方法将其显示*/
+      display: none;
+      position: absolute;
+      left: 0;
+      background-color:rgba(0,0,0,.3);
+      width: 200px;
+      height: 200px;
+    }
+    /*这里是把里面的遮罩层显示出来*/
+    .c1:hover .c4{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="c1"><div class="c2"></div></div>
+
+
+
+<div class="c1">
+  <div class="c4"></div>
+</div>
+</body>
+</html>
