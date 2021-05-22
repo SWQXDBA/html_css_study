@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .nav{
+    position: relative;
+    margin: 200px auto;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  .nav:hover .box,.box .sj{
+    display: block;
+  }
+  .box{
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: -35px;
+    float: left;
+    width: 100px;
+    height: 250px;
+    background-color: wheat;
+
+  }
+  .sj{
+    display: none;
+    position: absolute;
+    left: 40px;
+    top: -20px;
+    border: 10px transparent solid;
+    border-bottom: 10px wheat solid;
+  }
+  </style>
+</head>
+<body>
+<div class="nav">
+  <div class="box">
+    <div class="sj"></div>
+  </div>
+</div>
+</body>
+</html>
