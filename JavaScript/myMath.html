@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  var myMath = {
+    PI: 3.14,
+    max:function (){
+      var m = arguments[0];
+      for(var i in arguments){
+        if(m<=arguments[i]){
+          m=arguments[i];
+        }
+      }
+      return m;
+    }
+  }
+  console.log(myMath.PI);
+  console.log(myMath.max(1,5,7,3,4,2));
+</script>
+</body>
+</html>
