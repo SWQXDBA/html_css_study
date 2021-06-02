@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
   <style>
+    a{
+      text-decoration:none
+    }
     div{
       width: 500px;
       height: 400px;
@@ -37,6 +40,15 @@
 </head>
 <body>
 <div>
+  <form action="#">
+    名字
+    <input type="text" name="name"><br>
+    科目
+    <input type="text" name="sub"><br>
+    分数
+    <input type="text" name="sort"><br>
+    <input type="button" onclick="addtr(this)" value="提交">
+  </form>
   <table cellspacing="0">
     <thead>
     <tr>
@@ -74,14 +86,37 @@
     }
   ];
   var deltr = function (){
+    console.log(this);
     this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement);
   }
+  var addtr = function (obj){
+
+    let tbody = document.getElementsByTagName("table")[0].getElementsByTagName("tbody")[0];
+
+    let tr = document.createElement("tr");
+
+    var inp = obj.parentElement.getElementsByTagName("input");
+    for(let i = 0;i<inp.length-1;i++){
+      let td = document.createElement("td");
+      td.innerHTML =  inp[i].value;
+      tr.appendChild(td);
+    }
+    let td = document.createElement("td");
+    td.innerHTML="<a href=\"#\" >删除</a>"
+    let a = td.getElementsByTagName("a")[0];
+    a.onclick=deltr;
+    td.id="lasttd";
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+  }
+
+
   var table = document.getElementsByTagName("table")[0];
   var tbody = document.createElement("tbody");
   table.appendChild(tbody);
   for (let i=0;i<datas.length;i++){
     let tr = document.createElement("tr");
-    tbody.appendChild(tr);
+
     for(let k in datas[i]){
       let td = document.createElement("td");
       td.innerHTML=datas[i][k];
@@ -95,7 +130,7 @@
     tr.appendChild(td);
 
 
-
+    tbody.appendChild(tr);
 
 
   }
