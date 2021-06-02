@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    div{
+      width: 500px;
+      height: 400px;
+      margin: 300px auto;
+    }
+    thead th{
+      width: 60px;
+      height: 30px;
+      line-height: 30px;
+      color: purple;
+      font-size: 16px;
+      background-color: gray;
+      border: black solid 1px;
+      border-right: 0;
+    }
+    tbody td{
+      width: 60px;
+      height: 30px;
+      line-height: 30px;
+      color: black;
+      font-size: 16px;
+      background-color: white;
+      border: black solid 1px;
+      border-right: 0;
+      text-align: center;
+    }
+    #lasttd{
+      border-right:black 1px solid;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <table cellspacing="0">
+    <thead>
+    <tr>
+      <th>名称</th>
+      <th>科目</th>
+      <th>分数</th>
+      <th id="lasttd">操作</th>
+    </tr>
+    </thead>
+  </table>
+</div>
+
+<script>
+  var datas = [
+    {
+      name:"小明",
+      科目:"c",
+      分数:99
+    },{
+      name:"小明2",
+      科目:"2c",
+      分数:929
+    },{
+      name:"小明2",
+      科目:"2c",
+      分数:929
+    },{
+      name:"小明2",
+      科目:"2c",
+      分数:929
+    },{
+      name:"小明2",
+      科目:"2c",
+      分数:929
+    }
+  ];
+  var deltr = function (){
+    this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement);
+  }
+  var table = document.getElementsByTagName("table")[0];
+  var tbody = document.createElement("tbody");
+  table.appendChild(tbody);
+  for (let i=0;i<datas.length;i++){
+    let tr = document.createElement("tr");
+    tbody.appendChild(tr);
+    for(let k in datas[i]){
+      let td = document.createElement("td");
+      td.innerHTML=datas[i][k];
+      tr.appendChild(td);
+    }
+    let td = document.createElement("td");
+    td.innerHTML="<a href=\"#\" >删除</a>"
+    let a = td.getElementsByTagName("a")[0];
+    a.onclick=deltr;
+    td.id="lasttd";
+    tr.appendChild(td);
+
+
+
+
+
+  }
+
+</script>
+</body>
+</html>
