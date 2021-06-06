@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    img{
+      position: absolute;
+    }
+  </style>
+</head>
+<img id="1" src="../images/链接伪类选择器.png" height="100px" width="100px"/>
+<script>
+  document.addEventListener("mousemove",function (e){
+    var x  = e.pageX;
+    var y  = e.pageY;
+    var img = document.getElementById('1');
+    img.style.left = x+'px';
+    img.style.top = y+'px';
+  })
+</script>
+<body>
+
+</body>
+</html>
