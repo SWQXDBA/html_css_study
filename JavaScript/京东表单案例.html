@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .context{
+      bottom: 110px;
+      position: absolute;
+      width: 170px;
+      height: 26px;
+      line-height: 26px;
+      font-size: 26px;
+      background-color: wheat;
+      display: none;
+    }
+    .context:after{
+      content:'';
+      width: 0;
+      height: 0;
+      border: 10px transparent solid;
+      border-top: 10px wheat solid;
+      top: 26px;
+      left: 30px;
+      position: absolute;
+    }
+    .box{
+      margin: 200px auto;
+      width: 500px;
+      height: 100px;
+      position: relative;
+    }
+    .con{
+
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div class="context"></div>
+  <input type="text" class="con" >
+</div>
+<script>
+
+  var inpt = document.querySelector('.con');
+  inpt.addEventListener('keyup',function (e){
+    var cont = document.querySelector('.context');
+    cont.innerText =inpt.value;
+    if(inpt.value==='')
+      cont.style.display = 'none';
+    else
+      cont.style.display = 'block';
+  })
+</script>
+</body>
+</html>

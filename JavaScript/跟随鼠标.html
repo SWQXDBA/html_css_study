@@ -11,12 +11,15 @@
 </head>
 <img id="1" src="../images/链接伪类选择器.png" height="100px" width="100px"/>
 <script>
+  var cnt = 0;
   document.addEventListener("mousemove",function (e){
     var x  = e.pageX;
     var y  = e.pageY;
     var img = document.getElementById('1');
     img.style.left = x+'px';
     img.style.top = y+'px';
+    cnt++;
+    console.log(cnt);
   })
 </script>
 <body>
