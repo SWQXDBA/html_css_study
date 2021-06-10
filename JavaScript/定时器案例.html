@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<button class="bt">点击发送</button>
+<script>
+  var button = document.querySelector(".bt");
+  var time = 5;
+  button.addEventListener('click',function (){
+    button.disabled = true;
+
+    button.innerHTML = "请等待"+time+"秒重试";
+    time--;
+    var timer = setInterval(function (){
+      if(time==0){
+        button.disabled = false;
+        button.innerHTML="点击发送";
+        time=5;
+        clearInterval(timer);
+      }else{
+        button.innerHTML = "请等待"+time+"秒重试";
+        time--;
+      }
+    },1000)
+  })
+</script>
+</body>
+</html>
