@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<script>
+  var parm = location.search.substr(1);
+  var name = parm.split('&')[0].split('=')[1];
+  var pass = parm.split('&')[1].split('=')[1];
+  var div = document.querySelector('div');
+  div.innerHTML="您好， "+name+"  </br> 您的密码是"+pass;
+</script>
+</body>
+</html>
