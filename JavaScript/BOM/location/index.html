@@ -6,5 +6,21 @@
 </head>
 <body>
 这是一个主页
+<button id="baidu1">点击前往百度，可以后退</button>
+<button id="baidu2">点击前往百度，但是不可以后退</button>
+<script>
+    var but = document.getElementById('baidu1');
+    but.addEventListener('click',function (){
+        location.assign('https://www.baidu.com');
+    })
+
+
+    but = document.getElementById('baidu2');
+    but.addEventListener('click',function (){
+        location.replace('https://www.baidu.com');
+    })
+
+
+</script>
 </body>
 </html>
