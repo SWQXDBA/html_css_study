@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="text" type="text">
+<input id="select" type="checkbox">
+<script>
+  var data = document.querySelector('#text');
+  var val = localStorage.getItem('data');
+
+  var save = document.querySelector('#select');
+  if(val){
+    data.value = val;
+   save.checked = true;
+  }
+  save.addEventListener('change',function (){
+    if(this.checked){
+      localStorage.setItem('data',data.value);
+    }else{
+      localStorage.removeItem('data');
+    }
+  })
+</script>
+</body>
+</html>
