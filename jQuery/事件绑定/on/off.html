@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="../../jquery.min.js"></script>
+  <style>
+    .c{
+      background-color: skyblue;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div>ddd</div>
+<span>bbb</span>
+<script>
+  $('div').on({
+    mouseenter: function (){
+      $(this).css('background','red');
+    },
+    mouseleave: function (){
+      $(this).css('background','blue');
+    }
+  });
+  $('span').on('mouseenter mouseleave',function (){
+      $(this).toggleClass("c");//切换
+  })
+</script>
+</body>
+</html>
