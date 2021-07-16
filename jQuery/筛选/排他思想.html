@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="../jquery.min.js"></script>
+</head>
+<body>
+<button>变色</button>
+<button>变色</button>
+<button>变色</button>
+<button>变色</button>
+<button>变色</button>
+<script>
+  $(function (){
+    $('button').click(function (){
+      $(this).siblings('button').css('background','red');
+      $(this).css('background','blue');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <script src="../jquery.min.js"></script>
+</head>
+<body>
+<div> div</div>
+<script>
+  $(function (){
+    //设置多个属性,参数可以是对象形式
+    $('div').css({
+      //属性可以不用加引号
+      width:200,
+      height:150,
+      'color':'yellow',
+      backgroundColor: 'red' //属性要用驼峰命名法
+      //非数字的参数要加引号
+    })
+    //获取css属性
+    var width = $('div').css('width');
+    alert(width);
+  })
+</script>
+</body>
+</html>

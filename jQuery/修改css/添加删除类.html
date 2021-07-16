@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    .c{
+      width: 200px;
+      height: 150px;
+      background-color: red;
+    }
+
+    .d{
+      width: 300px;
+      height: 350px;
+      background-color: blue;
+    }
+
+  </style>
+  <script src="../jquery.min.js"></script>
+</head>
+<body>
+<div class="c"></div>
+<script>
+  $(function (){
+    $('div').mouseenter(function (){
+      $(this).removeClass('c');
+    }).mouseleave(function (){
+      $(this).addClass('d');
+    });
+
+  })
+</script>
+</body>
+</html>

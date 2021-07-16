@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../jquery.min.js"></script>
+</head>
+<body>
+
+
+<div>
+  <ul id="text">
+    <li>100</li>
+    <li>200</li>
+    <li>300</li>
+    <li>400</li>
+    <li>500</li>
+    <li>600</li>
+    <li>700</li>
+    <li>800</li>
+    <li>900</li>
+    <li>1000</li>
+    <a style="color: lightblue" href="#">虽然是兄弟但是siblings('li')，所以不变色</a>
+  </ul>
+  <ul id="a">
+    <li><a href="">对应的</a></li>
+    <li><a href="">对应的</a></li>
+    <li><a href="">对应的</a></li>
+    <li><a href="">对应的</a></li>
+    <li><a href="">对应的</a></li>
+    <li><a href="">对应的</a></li>
+    <li><a href="">对应的</a></li>
+    <li><a href="">对应的</a></li>
+    <li><a href="">对应的</a></li>
+    <li><a href="">对应的</a></li>
+  </ul>
+</div>
+<script>
+  $(function (){
+    var index ;
+    $('#a li').mouseenter(function (){
+      index = $(this).index();
+      $('#text li').eq(index).css('color','red').siblings('li').css('color','black');
+    });
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="../jquery.min.js"></script>
+  <style>
+    a{
+      text-decoration:none;
+
+    }
+    input{
+     height: 10px;
+     width: 30px;
+    }
+  </style>
+</head>
+
+<body>
+<div>
+  <a href="#" class="increase">+</a>
+  <input id="price" type="text" value="1">
+  <a href="#" class="decrease">-</a>
+  <script>
+    $(function (){
+      $('.increase').click(function (){
+        $('#price').val(parseInt($('#price').val())+1);
+      })
+      $('.decrease').click(function (){
+        price = $('#price').val();
+        $('#price').val(parseInt($('#price').val())-1);
+      })
+    })
+
+  </script>
+</div>
+
+
+</body>
+</html>
