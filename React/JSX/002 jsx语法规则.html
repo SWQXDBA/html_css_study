@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!-- 以下引入 react.js, react-dom.js（react 0.14 后将 react-dom 从 react 核心分离，更符合 react 跨平台抽象化的定位）以及 babel-core browser 版 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
+    <style>
+        .cn{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+<!-- 这边的 id="example" 的 <div> 为 React Component 要插入的地方 -->
+<div id="example"></div>
+<!-- 以下就是包在 babel（透过进行语言翻译）中的 React JSX 语法，babel 会将其转为浏览器看的懂得 JavaScript -->
+<script type="text/babel">
+    const words = 'hello';
+    const vDom = (
+        <div>
+            <h1 style={{color:'red',fontSize:'40px'}} className="title">{words}</h1>
+            <h2 className="cn">Hello,你好</h2>
+            <input type="text"/>
+            <hehe> hehehe</hehe>
+            {/* <h2>注释要这么写</h2> */}
+        </div>
+    );
+
+    ReactDOM.render(vDom,document.getElementById('example'));
+    /*
+    * jsx语法规则：
+    * 1.创建虚拟DOM时 不要写引号
+    * 2.标签中要混入js表达式 要用{}
+    * 3.标签中样式的类名要用className指定 而不是html的class
+    * 4.内联样式要用style={{color:'red',fontSize:'40px'}} 注意属性名转为小驼峰 如font-size转为fontSize
+    * 5.只能有一个跟标签 如果写多个并列 要用上一级标签包起来
+    * 6.标签必须闭合 有/>
+    * 7.关于标签首字母
+    *   1.若首字母小写 则React回去寻找与之同名的html标签
+    *       若找见 则转化为html同名元素
+    *       若为找见，则报错
+    *   2.若首字母大写 那么React回去找与之同名的component（组件） 如果没找到则报错
+    * */
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!-- 以下引入 react.js, react-dom.js（react 0.14 后将 react-dom 从 react 核心分离，更符合 react 跨平台抽象化的定位）以及 babel-core browser 版 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
+</head>
+<body>
+<!-- 这边的 id="example" 的 <div> 为 React Component 要插入的地方 -->
+<div id="example"></div>
+<div id="example2"></div>
+<!-- 以下就是包在 babel（透过进行语言翻译）中的 React JSX 语法，babel 会将其转为浏览器看的懂得 JavaScript -->
+<script type="text/babel">
+    class Demo extends React.Component{
+        constructor(props) {
+            super(props);
+            this.state = {good : true}
+            //给自身实例追加一个change方法 这个方法是根据原型上的change用bind生成的 否则是直接调用change() 那么它的this为undefined
+            this.change = this.change.bind(this)
+        }
+        render(){
+            console.log(this)//Demo类的实例对象<==>Demo组件的实例对象
+            const {good} = this.state//解构赋值
+            return <h2 onClick={this.change}>今天号吗？{good?'好':'不太好'}</h2>
+        }
+        change(){
+            //state不能直接修改 要用一个api修改
+            //setState()是从React.Component上继承来的方法
+            const {good} = this.state
+            this.setState({good:!good})
+        }
+
+    }
+    //注意组件名要大写开头 不能ff之类的
+    ReactDOM.render(<Demo/>,document.getElementById('example'))
+
+</script>
+</body>
+</html>

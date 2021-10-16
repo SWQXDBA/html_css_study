@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello React!</title>
+  <!-- 以下引入 react.js, react-dom.js（react 0.14 后将 react-dom 从 react 核心分离，更符合 react 跨平台抽象化的定位）以及 babel-core browser 版 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
+  <style>
+    #id1{
+      color: red;
+    }
+    #id2{
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+<!-- 这边的 id="example" 的 <div> 为 React Component 要插入的地方 -->
+<div id="example"></div>
+<div id="example2">
+
+</div>
+<!-- 以下就是包在 babel（透过进行语言翻译）中的 React JSX 语法，babel 会将其转为浏览器看的懂得 JavaScript -->
+<script type="text/babel">
+  //用jsx(推荐)
+  let vDom1 = (
+          <h1 id="id1">
+            <span>用jsx创建虚拟dom</span>
+          </h1>);
+
+  ReactDOM.render(
+          vDom1,
+          document.getElementById('example')
+  );
+  //第一个参数：标签名 第二个参数：属性 用对象的方式传入，第三个参数 htmlText文本内容 或者其他虚拟dom用于嵌套
+  let vDom2  = React.createElement('h1',{id:'id2'},React.createElement('span',null,'用js创建虚拟dom'));
+  ReactDOM.render(vDom2,
+          document.getElementById('example2')
+  );
+</script>
+</body>
+</html>

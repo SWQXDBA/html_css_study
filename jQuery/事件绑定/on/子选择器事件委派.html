@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../jquery.min.js"></script>
+</head>
+<body>
+<ul>
+    <li>bbb</li>
+    <li>bbb</li>
+    <li>bbb</li>
+    <li>bbb</li>
+    <li>bbb</li>
+    <li>bbb</li>
+    <li>bbb</li>
+    <li>bbb</li>
+    <li>bbb</li>
+    <li>bbb</li>
+</ul>
+<script>
+    $(function (){
+        //给父元素绑定事件，由子元素触发事件
+        $('ul').on('click','li',function (){
+            $(this).html('aaa');
+        })
+        $('ul').one('mouseover','li',function (){//one只会触发一次
+            $(this).html('aaa');
+        })
+    })
+</script>
+</body>
+</html>
