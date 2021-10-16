@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    let arr1 = [1,2,3,4,5]
+    console.log(...arr1)//拆包
+    function demo(...params){//打包 把多个参数打包成一个params
+        console.log('我收到的参数为',params)
+    }
+    demo(1,2,3)
+    let arr2 = [-1,0,...arr1,6,7,8]//拆包
+    console.log(arr2)
+
+    let obj = {name:'你好',age:18}
+    let obj2 = {姓名:'你好',age:19}
+    //console.log(...obj)会报错 对象不能直接展开
+    console.log({...obj})//可以用 对象可以在对象中展开 可以用于浅拷贝一个对象出来
+    console.log({...obj,...obj2})//合并对象 相同的属性会以写在后面的为准 不同的属性会加入新的对象中进行合并{name:'你好',姓名:'你好',age:19}
+</script>
+</body>
+</html>
