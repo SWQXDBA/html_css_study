@@ -51,7 +51,8 @@
     }
     login = (event)=>{
       event.preventDefault()//阻止默认行为(这里阻止form的跳转)
-     alert(this.state.username+"  "+this.state.password)
+      const {username,password} = this.state
+     alert(username+"  "+password)
     }
   }
 
