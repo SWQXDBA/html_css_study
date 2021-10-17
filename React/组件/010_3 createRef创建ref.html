@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Hello React!</title>
+  <!-- 以下引入 react.js, react-dom.js（react 0.14 后将 react-dom 从 react 核心分离，更符合 react 跨平台抽象化的定位）以及 babel-core browser 版 -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+
+<!-- 这边的 id="example" 的 <div> 为 React Component 要插入的地方 -->
+<div id="example"></div>
+<div id="example2"></div>
+<!-- 以下就是包在 babel（透过进行语言翻译）中的 React JSX 语法，babel 会将其转为浏览器看的懂得 JavaScript -->
+<script type="text/babel">
+  class Demo extends React.Component {
+    container1 = React.createRef()
+    container2 = React.createRef()
+    //通过这里ref会调用里面的语句 把自身赋值给container1.current 通过container1.current.value获取
+    render() {
+      return (
+              <div>
+                <input type="text" ref={this.container1}/>
+                <button  onClick={this.show} ref={this.container2}>点我弹出数据</button>
+              </div>
+      )
+    }
+    show = ()=>{
+      const {container1} = this
+      const {container2} = this
+      alert(container1.current.value)
+      alert(container2.current.value)
+    }
+
+  }
+
+
+  //jsx中可以用展开语法展开一个对象，但是仅仅适用于传递标签属性
+  ReactDOM.render(<Demo/>, document.getElementById('example'))
+
+</script>
+</body>
+</html>
+</body>
+</html>
