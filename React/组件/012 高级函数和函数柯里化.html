@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Hello React!</title>
+  <!-- 以下引入 react.js, react-dom.js（react 0.14 后将 react-dom 从 react 核心分离，更符合 react 跨平台抽象化的定位）以及 babel-core browser 版 -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+
+<!-- 这边的 id="example" 的 <div> 为 React Component 要插入的地方 -->
+<div id="example"></div>
+<div id="example2"></div>
+<!-- 以下就是包在 babel（透过进行语言翻译）中的 React JSX 语法，babel 会将其转为浏览器看的懂得 JavaScript -->
+<script type="text/babel">
+  class Demo extends React.Component {
+
+    state = {username:'',password:''}
+    //解决统一处理的问题
+    //实际上调用的是{}中的表达式的返回值的函数 因此套娃一层把属性名传进去 实际调用的是change()函数所返回的函数
+    // //这个返回出来的函数 实际上是个闭包 可以访问外部change函数的变量type
+    //关于[type]:event.target.value}
+    //实际上class.a=b的原始写法为class['a']=b 即属性名是一个字符串 所以写成[type]表示属性名为类型为字符串的变量type
+    render() {
+      return (
+              <form onSubmit={this.login}>
+                <label >
+                  请输入账号<input type="text" onChange={this.change('username')}/>
+                </label>
+                <label>
+                  请输入密码
+                  <input type="password"  onChange={this.change('password')}/>
+                </label>
+                <button onChange={this.login}>提交</button>
+              </form>
+      )
+
+    }
+    change = (type)=>{
+      return (event)=> {
+        this.setState({[type]:event.target.value})}
+    }
+    login = (event)=>{
+      event.preventDefault()//阻止默认行为(这里阻止form的跳转)
+      const {username,password} = this.state
+      alert(username+"  "+password)
+    }
+  }
+
+
+  //jsx中可以用展开语法展开一个对象，但是仅仅适用于传递标签属性
+  ReactDOM.render(<Demo/>, document.getElementById('example'))
+
+</script>
+</body>
+</html>
+</body>
+</html>

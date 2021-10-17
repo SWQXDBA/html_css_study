@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //普通写法
+  function sum1(a,b,c){
+    return a+b+c
+  }
+  //柯里化写法
+  function sum2(a){
+    return (b)=>{
+      return (c)=>{
+        return a+b+c
+      }
+    }
+  }
+  console.log('sum1:'+sum1(1,2,3))
+  console.log('sum2:'+sum2(1)(2)(3))
+
+
+</script>
+</body>
+</html>
