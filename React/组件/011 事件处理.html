@@ -23,22 +23,35 @@
 <!-- 以下就是包在 babel（透过进行语言翻译）中的 React JSX 语法，babel 会将其转为浏览器看的懂得 JavaScript -->
 <script type="text/babel">
   class Demo extends React.Component {
-    container1 = React.createRef()
-    container2 = React.createRef()
+
+    state = {username:'',password:''}
     //通过这里ref会调用里面的语句 把自身赋值给container1.current 通过container1.current.value获取
     render() {
       return (
-              <div onClick={this.show2}>
-                <button  onClick={this.show} ref={this.container2}>点我弹出数据</button>
-              </div>
+              <form onSubmit={this.login}>
+                <label >
+                  请输入账号<input type="text" onChange={this.changeUsername}/>
+                </label>
+                <label>
+                  请输入密码
+                  <input type="password"  onChange={this.changePassword}/>
+                </label>
+                <button>提交</button>
+              </form>
       )
+
     }
-    show = (event)=>{
-      event.stopPropagation()//阻止事件冒泡
-      console.log('event1')
+    changeUsername = (event)=>{
+
+      this.setState({username:event.target.value})
     }
-    show2 = ()=>{
-      console.log('event2')
+    changePassword = (event)=>{
+
+      this.setState({password:event.target.value})
+    }
+    login = (event)=>{
+      event.preventDefault()//阻止默认行为(这里阻止form的跳转)
+     alert(this.state.username+"  "+this.state.password)
     }
   }
 
