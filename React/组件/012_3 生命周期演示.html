@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello React!</title>
+    <!-- 以下引入 react.js, react-dom.js（react 0.14 后将 react-dom 从 react 核心分离，更符合 react 跨平台抽象化的定位）以及 babel-core browser 版 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+
+<!-- 这边的 id="example" 的 <div> 为 React Component 要插入的地方 -->
+<div id="example"></div>
+<div id="example2"></div>
+<!-- 以下就是包在 babel（透过进行语言翻译）中的 React JSX 语法，babel 会将其转为浏览器看的懂得 JavaScript -->
+<script type="text/babel">
+    class Demo extends React.Component {
+        state = {
+            count : 0,
+            autoRender : true
+        }
+        //通过这里ref会调用里面的语句 把自身赋值给container1.current 通过container1.current.value获取
+        render() {
+            //相当于style={{opacity:opacity}} 由于属性名和属性值一样 所以用了对象简写方式
+
+            const {count} = this.state
+            return (
+                <div>
+                    <h1>'count:'{count} </h1>
+                    <button onClick={this.unloading}>点击后卸载组件</button>
+                    <button onClick={this.countplus}>点击后增加1</button>
+                    <button onClick={()=>{this.renderChange(true)}}>点击允许render</button>
+                    <button onClick={()=>{this.renderChange(false)}}>点击不允许render</button>
+                    <button onClick={this.mustUpdate}>点击强制render</button>
+                    <button onClick={()=>this.forceUpdate()}>点击强制render2</button>
+                </div>
+            )
+        }
+        componentDidMount(){// 这是一个生命周期函数，这个方法会在组件被创建的时候调用一次 这个方法中的this指向没有问题 是组件实例对象本身
+
+        }
+        componentWillUnmount(){// 这是一个生命周期函数，当组件被卸载的时候调用
+
+        }
+        shouldComponentUpdate(){
+            return this.state.autoRender
+        }
+        countplus = ()=>{
+            this.setState({count:this.state.count+1})
+            this.state.count+=1
+        }
+        mustUpdate = ()=>{
+            this.forceUpdate() //经过测试 不能直接写onClick={this.forceUpdate} 会报错
+        }
+        renderChange = (render)=>{
+            console.log('状态要改变了!'+render)
+            this.state.autoRender = render
+            console.log('状态改变了!'+ this.state.autoRender)
+            console.log( this)
+        }
+        unloading = ()=>{
+            //卸载组件
+            ReactDOM.unmountComponentAtNode(document.getElementById('example'))
+        }
+
+
+    }
+
+
+    //jsx中可以用展开语法展开一个对象，但是仅仅适用于传递标签属性
+    ReactDOM.render(<Demo/>, document.getElementById('example'))
+
+</script>
+</body>
+</html>
+</body>
+</html>
