@@ -37,6 +37,7 @@
                     <h1>'count:'{count} </h1>
                     <button onClick={this.unloading}>点击后卸载组件</button>
                     <button onClick={this.countplus}>点击后增加1</button>
+                    <button onClick={()=>{this.state.count+=1}}>点击后增加22</button>//不会触发自动的render
                     <button onClick={()=>{this.renderChange(true)}}>点击允许render</button>
                     <button onClick={()=>{this.renderChange(false)}}>点击不允许render</button>
                     <button onClick={this.mustUpdate}>点击强制render</button>
