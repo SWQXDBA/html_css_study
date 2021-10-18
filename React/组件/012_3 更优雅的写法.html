@@ -25,34 +25,33 @@
   class Demo extends React.Component {
 
     state = {username:'',password:''}
-    //通过这里ref会调用里面的语句 把自身赋值给container1.current 通过container1.current.value获取
+    //解决统一处理的问题
+    //实际上调用的是{}中的表达式的返回值的函数 因此套娃一层把属性名传进去 实际调用的是change()函数所返回的函数
+    // //这个返回出来的函数 实际上是个闭包 可以访问外部change函数的变量type
+    //关于[type]:event.target.value}
+    //实际上class.a=b的原始写法为class['a']=b 即属性名是一个字符串 所以写成[type]表示属性名为类型为字符串的变量type
     render() {
       return (
               <form onSubmit={this.login}>
                 <label >
-                  请输入账号<input type="text" onChange={this.changeUsername}/>
+                  请输入账号<input type="text" onChange={(event)=>this.change(event,'username')}/>
                 </label>
                 <label>
                   请输入密码
-                  <input type="password"  onChange={this.changePassword}/>
+                  <input type="password"  onChange={(event)=>this.change(event,'password')}/>
                 </label>
-                <button>提交</button>
+                <button onChange={this.login}>提交</button>
               </form>
       )
 
     }
-    changeUsername = (event)=>{
-
-      this.setState({username:event.target.value})
-    }
-    changePassword = (event)=>{
-
-      this.setState({password:event.target.value})
+    change = (event,type)=>{
+        this.setState({[type]:event.target.value})
     }
     login = (event)=>{
       event.preventDefault()//阻止默认行为(这里阻止form的跳转)
       const {username,password} = this.state
-     alert(username+"  "+password)
+      alert(username+"  "+password)
     }
   }
 
