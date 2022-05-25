@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @media screen and (max-width: 1500px) and (min-width: 800px) {
+            body {
+                font-size: 25px;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            body {
+               font-size: 14px;
+            }
+        }
+        .mainLine{
+            height: 60rem;
+            width: 50rem;
+            background-color: blue;
+            font-size: 2rem;
+            color: red;
+            display: flex;
+            /*主轴为横轴*/
+            flex-direction: row;
+            /*内容在横轴的中间*/
+            justify-content: center;
+            /*交叉轴为竖轴 内容出现在竖轴的上方*/
+            align-items: start;
+        }
+    </style>
+</head>
+<body>
+响应式布局中我们需要关注 FlexBox 里的两个角色：容器和子元素。
+
+container
+指定 display 属性为 flex，就可以将一个元素设置为 FlexBox 容器，我们可以通过定义它的属性，决定子元素的排列方式，属性可选值有 6 种，
+
+flex-direction，主轴方向，也就是子元素排列的方向
+flex-wrap，子元素能否换行展示及换行方式
+flex-flow，flex-direction 和 flex-wrap 的简写形式
+justify-content，子元素在主轴上的对齐方式
+align-items，子元素在垂直于主轴的交叉轴上的排列方式
+align-content，子元素在多条轴线上的对齐方式
+items
+子元素也支持 6 个属性可选值，
+
+order，子元素在主轴上的排列顺序
+flex-grow，子元素的放大比例，默认 0
+flex-shrink，子元素的缩小比例，默认 1
+flex-basis，分配剩余空间时，子元素的默认大小，默认 auto
+flex，flex-grow，flex-shrink，flex-basis 的简写
+align-self，覆盖容器的 align-items 属性
+
+
+<div class="mainLine">
+    <div class="unit">unit1</div>
+    <div class="unit">unit1</div>
+    <div class="unit">unit1</div>
+    <div class="unit">unit1</div>
+    <div class="unit">unit1</div>
+    主轴
+</div>
+</body>
+</html>
