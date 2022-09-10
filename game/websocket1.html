@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #context {
+            width: 500px;
+            height: 500px;
+
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="context">
+    <canvas width="600" height="600" id="canvas"></canvas>
+</div>
+
+<script>
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let entities = []
+
+    let socket = null
+    const initSocket = () => {
+        socket = new WebSocket('ws://localhost:8080')
+        socket.onmessage = (message) => {
+            entities = JSON.parse(message.data)
+
+        }
+        socket.onclose = this.initSocket
+        return socket
+
+    }
+    initSocket()
+    let data1 = {
+        x: 0,
+        y: 0,
+        angle: 0
+    }
+
+
+    const sendCommand = (command) => {
+        socket.send(JSON.stringify(command))
+    }
+    document.addEventListener('keydown', function (evt) {
+
+        sendCommand({
+            type: 'keydown',
+            keyCode: evt.which + ''
+        })
+
+    });
+
+    document.addEventListener('keyup', function (evt) {
+        sendCommand({
+            type: 'keyup',
+            keyCode: evt.which + ''
+        })
+
+    })
+
+
+    draw = () => {
+
+        const size = 600
+        ctx.clearRect(0, 0, size, size)
+
+        entities.forEach(data => {
+            ctx.save()
+
+
+            ctx.strokeStyle = 'blue'
+            ctx.strokeRect(0, 0, size, size);
+            ctx.restore();
+            ctx.save()
+
+            ctx.fillStyle = 'red';
+            const len = 20
+            const len2 = 4
+
+            // const center = [(data.x+len)/2,(data.y+len)/2]
+            const center = [data.x + (len / 2), data.y + (len / 2)]
+            ctx.translate(center[0], center[1]);
+            ctx.rotate(data.angle);
+
+            ctx.fillRect(-(len / 2), -(len / 2), len, len);
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(-(len / 2) + len / 2 - (len2 / 2), -(len / 2), len2, len2);
+
+            ctx.restore();
+        })
+
+    }
+    mainLoop = () => {
+
+        // entities.forEach(entity=>entity.draw())
+
+        draw()
+        window.requestAnimationFrame(mainLoop)
+    }
+
+    (() => {
+        window.requestAnimationFrame(mainLoop)
+
+    })()
+</script>
+</body>
+</html>

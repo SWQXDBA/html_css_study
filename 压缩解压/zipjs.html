@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link>
+</head>
+<body>
+
+<input type="file" id="file"/>
+<script   src="../lib/gildas-lormeau-zip.js-2e0209b/dist/zip.min.js"></script>
+<script  >
+
+
+    /**
+     * 看 https://gildas-lormeau.github.io/zip.js/
+     * @param file
+     * @param options
+     * @returns {Promise<Entry[]> | PerformanceEntryList}
+     */
+
+    function getEntries(file, options) {
+        return (new zip.ZipReader(new zip.BlobReader(file))).getEntries(options);
+    }
+    const  selectFile= async(c)=>{
+        const zip1 = c.target.files[0];
+
+
+        const entries = await getEntries(zip1);
+        for (const item of entries) {
+             console.log(await item.getData(new zip.TextWriter()))
+        }
+        // console.log(entries)
+        const buildTree1 = buildTree(entries);
+        console.log(buildTree1)
+
+    }
+
+    const   buildTree = (array)=>{
+        const map = {}
+        const rootName = ''
+        //过滤掉.keep文件
+        array = array.filter(item=>item.filename.indexOf('keep')===-1)
+        console.log(array)
+        const getParentName = (name)=>{
+                for (let i = name.length-2;i>=0;i--){
+                    const c = name[i]
+                    if(c==='/'){
+                     return name.substring(0,i+1)
+                    }
+                }
+            return rootName
+        }
+
+        const buildNode = (item)=>{
+            item.getParent = ()=>{
+                if(item.parentName===rootName){
+                    return null
+                }
+                return map[item.parentName]
+            }
+            item.children = []
+
+            return item
+        }
+        //获取父节点名字 存起来
+         array.forEach(item=>{
+            item.parentName = getParentName(item.filename)
+            map[item.filename]=buildNode(item)
+        })
+
+        //建立父子连接
+        array.forEach(item=>{
+            const parent = item.getParent();
+            if(parent!==null){
+                parent.children.push(item)
+            }
+        })
+       // 过滤出roots 表示其实际没有父节点了
+       return array.filter(item=>{
+           return item.parentName===rootName
+        })
+
+
+    }
+    const file = document.getElementById('file');
+    file.onchange=selectFile
+
+
+</script>
+</body>
+</html>
